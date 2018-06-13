@@ -21,6 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SwipingActivity"
+            android:label="@string/title_activity_swiping"></activity>
     </application>
 
 </manifest>

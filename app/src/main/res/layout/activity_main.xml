@@ -1,4 +1,4 @@
-    <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -36,7 +36,6 @@
         android:layout_width="250dp"
         android:layout_height="64dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textNoSuggestions|textPassword"
@@ -49,7 +48,6 @@
         android:layout_width="250dp"
         android:layout_height="64dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="4dp"
         android:layout_marginTop="90dp"
         android:ems="10"
         android:inputType="textNoSuggestions|textVisiblePassword"
@@ -72,12 +70,13 @@
 
     <TextView
         android:id="@+id/viewPassword"
-        android:layout_width="110"
+        android:layout_width="128dp"
         android:layout_height="32dp"
         android:layout_marginBottom="80dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="32dp"
         android:text="Password:"
+        android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/btnLogIn"
         app:layout_constraintEnd_toStartOf="@+id/editPassword"
@@ -85,12 +84,13 @@
 
     <TextView
         android:id="@+id/viewUsername"
-        android:layout_width="110"
+        android:layout_width="128dp"
         android:layout_height="32dp"
         android:layout_marginBottom="48dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="32dp"
         android:text="Username:"
+        android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/viewPassword"
         app:layout_constraintEnd_toStartOf="@+id/editUsername"
