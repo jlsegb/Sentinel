@@ -20,6 +20,7 @@ android {
 }
 
 dependencies {
+    compile 'com.google.android.gms:play-services-auth:15.0.1'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
@@ -30,7 +31,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    //adding these two dependencies on 6/16/2018 to use APIs for the android dupport library
+    //adding these two dependencies on 6/16/2018 to use APIs for the android support library
     //in the usage of the navigation drawer. **Jose**
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
