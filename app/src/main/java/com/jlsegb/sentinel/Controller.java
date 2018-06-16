@@ -9,4 +9,16 @@ public class Controller {
     public JSONObject toJSON(String id) {
         return null;
     }
+
+    public Account fromJSON(String id) {
+        return null;
+    }
+
+    public void requestSponsor(String id) {
+
+    }
+
+    public void requestAddict(String id) {
+
+    }
 }
