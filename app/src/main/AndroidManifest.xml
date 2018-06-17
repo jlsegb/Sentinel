@@ -28,6 +28,7 @@
         <activity
             android:name=".AccountDetailsActivity"
             android:label="@string/title_activity_account_details" />
+        <activity android:name=".MessageListActivity"></activity>
     </application>
 
 </manifest>
