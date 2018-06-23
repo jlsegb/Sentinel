@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -22,13 +23,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SwipingActivity"
-            android:label="@string/title_activity_swiping"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".AccountDetailsActivity"
             android:label="@string/title_activity_account_details" />
-        <activity android:name=".MessageListActivity"></activity>
+        <activity android:name=".MessageListActivity" />
+        <activity android:name=".ScrollingActivity" />
     </application>
 
 </manifest>
