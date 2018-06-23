@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     /**/
 
     //save users log in info
-    /*
+    /*44444
     public void savedInfo (View view){
         SharedPreferences sharedPref = getSharedPreferences()
     }*/

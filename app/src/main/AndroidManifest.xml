@@ -27,6 +27,7 @@
             android:label="@string/title_activity_account_details" />
         <activity android:name=".MessageListActivity" />
         <activity android:name=".ScrollingActivity" />
+        <activity android:name=".Matches"></activity>
     </application>
 
 </manifest>
