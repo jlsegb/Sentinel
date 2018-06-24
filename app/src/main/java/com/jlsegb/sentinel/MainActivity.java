@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -101,6 +102,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else {
             Log.d("sign-in", "account = null");
+            Toast.makeText(this.getBaseContext(), "Sign your entire phone into google before using this app!",
+                    Toast.LENGTH_LONG).show();
         }
     }
 
