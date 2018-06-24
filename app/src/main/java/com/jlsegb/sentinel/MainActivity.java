@@ -40,38 +40,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
+
         /* Check for existing Google Sign In account, if the user is already signed in,
         the GoogleSignInAccount will be non-null. */
         account = GoogleSignIn.getLastSignedInAccount(this);
         updateUI(account); // part of tutorial
     }
 
-    private void updateUI(GoogleSignInAccount account) {
-        if (account != null) {
-            Log.d("sign-in", "account email = " + account.getEmail());
-        }
-        else {
-            Log.d("sign-in", "account = null");
-        }
-    }
-
-    /*
+    // button handling for google sign-in
     @Override
-    public void onResume(){
-        super.onResume();..
-    }
-    */
-
-    /**/
-    public void onLogInClick(View view) {
-        TextView usernameObject = findViewById(R.id.editUsername);
-        TextView passwordObject = findViewById(R.id.editPassword);
-        username = usernameObject.getText().toString();
-        password = passwordObject.getText().toString();
-        Log.d("main", "username: " + username);
-        Log.d("main", "password: " + password);
-
-
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.sign_in_button:
+                signIn();
+                break;
+        }
     }
 
     // google sign-in
@@ -80,13 +63,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    // for google sign-in
+    // for google sing-in
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.sign_in_button:
-                signIn();
-                break;
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            Log.d("sign-in", "requestCode == RC_SIGN_IN");
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
         }
     }
 
@@ -106,22 +94,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    // for google sing-in
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            Log.d("sign-in", "requestCode == RC_SIGN_IN");
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
+    // This will be how we get to the next activity
+    private void updateUI(GoogleSignInAccount account) {
+        if (account != null) {
+            Log.d("sign-in", "account email = " + account.getEmail());
+        }
+        else {
+            Log.d("sign-in", "account = null");
         }
     }
 
-    /**/
+    /*
+    @Override
+    public void onResume(){
+        super.onResume();..
+    }
+    */
+
+    // for old sign-in method
+    public void onLogInClick(View view) {
+        TextView usernameObject = findViewById(R.id.editUsername);
+        TextView passwordObject = findViewById(R.id.editPassword);
+        username = usernameObject.getText().toString();
+        password = passwordObject.getText().toString();
+        Log.d("main", "username: " + username);
+        Log.d("main", "password: " + password);
+    }
 
     //save users log in info
     /*44444
