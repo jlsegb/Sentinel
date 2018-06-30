@@ -18,8 +18,6 @@ import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private String username;
-    private String password;
     public GoogleSignInClient mGoogleSignInClient;
     public GoogleSignInAccount account;
     public int RC_SIGN_IN = 9001; // stack overflow said this could be any number
@@ -113,16 +111,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onResume();..
     }
     */
-
-    // for old sign-in method
-    public void onLogInClick(View view) {
-        TextView usernameObject = findViewById(R.id.editUsername);
-        TextView passwordObject = findViewById(R.id.editPassword);
-        username = usernameObject.getText().toString();
-        password = passwordObject.getText().toString();
-        Log.d("main", "username: " + username);
-        Log.d("main", "password: " + password);
-    }
 
     //save users log in info
     /*44444
