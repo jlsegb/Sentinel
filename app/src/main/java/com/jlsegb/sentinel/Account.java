@@ -10,6 +10,7 @@ public class Account {
     private String username;
     private String password;
     private String email;
+    private boolean isNewUser;
 
 // Accessors and Mutators
     public String getId() {
@@ -42,5 +43,13 @@ public class Account {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean getIsNewUser() {
+        return isNewUser;
+    }
+
+    public void setIsnewUser(boolean newUser) {
+        isNewUser = newUser;
     }
 }
