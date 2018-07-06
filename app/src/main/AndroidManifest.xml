@@ -27,12 +27,13 @@
             android:label="@string/title_activity_account_details" />
         <activity android:name=".MessageListActivity" />
         <activity android:name=".ScrollingActivity" />
-        <activity android:name=".Matches"></activity>
+        <activity android:name=".Matches" />
         <activity
             android:name=".DrawerActivity"
             android:label="@string/title_activity_drawer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Matches"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Matches" />
+        <activity android:name=".EditProfileActivity"></activity>
     </application>
 
 </manifest>
