@@ -6,7 +6,7 @@ public class Profile {
     private String name;
     private String city;
     private String addictions;
-    private String preferedCommunication;
+    private String preferredCommunication;
     private String meetingFrequency;
     private String bio;
     // picture?
@@ -45,11 +45,11 @@ public class Profile {
     }
 
     public String getPreferedCommunication() {
-        return preferedCommunication;
+        return preferredCommunication;
     }
 
     public void setPreferedCommunication(String preferedCommunication) {
-        this.preferedCommunication = preferedCommunication;
+        this.preferredCommunication = preferedCommunication;
     }
 
     public String getMeetingFrequency() {
