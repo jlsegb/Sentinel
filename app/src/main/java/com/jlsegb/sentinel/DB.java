@@ -4,6 +4,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+
 public class DB {
 
     private ArrayList<String> sponsors;
@@ -39,3 +40,4 @@ public class DB {
     }
 
 }
+
