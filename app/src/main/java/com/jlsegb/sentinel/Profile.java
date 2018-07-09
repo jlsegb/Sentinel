@@ -2,70 +2,63 @@ package com.jlsegb.sentinel;
 
 public class Profile {
 
-    private String tag; // "sponsor" or "addict"
-    private String name;
-    private String city;
-    private String addictions;
-    private String preferredCommunication;
-    private String meetingFrequency;
-    private String bio;
-    // picture?
+    String profileId;
+    String name1;
+    String location;
+    String aboutMe;
+    String frequency;
 
-// Accessors and Mutators
-    public String getTag() {
-        return tag;
+    public Profile () {
+
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public Profile(String profileId, String name1, String location, String aboutMe, String frequency) {
+        this.profileId = profileId;
+        this.name1 = name1;
+        this.location = location;
+        this.aboutMe = aboutMe;
+        this.frequency = frequency;
     }
 
-    public String getName() {
-        return name;
+    public String getProfileId() {
+        return profileId;
+    }
+
+    public String getName1() {
+        return name1;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getAboutMe() {
+        return aboutMe;
+    }
+
+    public String getFrequency() {
+        return frequency;
+    }
+
+    /*
+    public void setProfileId(String profileId) {
+        this.profileId = profileId;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name1 = name;
     }
 
-    public String getCity() {
-        return city;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setAboutMe(String aboutMe) {
+        this.aboutMe = aboutMe;
     }
 
-    public String getAddictions() {
-        return addictions;
+    public void setFrequency(String frequency) {
+        this.frequency = frequency;
     }
-
-    public void setAddictions(String addictions) {
-        this.addictions = addictions;
-    }
-
-    public String getPreferedCommunication() {
-        return preferredCommunication;
-    }
-
-    public void setPreferedCommunication(String preferedCommunication) {
-        this.preferredCommunication = preferedCommunication;
-    }
-
-    public String getMeetingFrequency() {
-        return meetingFrequency;
-    }
-
-    public void setMeetingFrequency(String meetingFrequency) {
-        this.meetingFrequency = meetingFrequency;
-    }
-
-    public String getBio() {
-        return bio;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
-    }
-
+    */
 }

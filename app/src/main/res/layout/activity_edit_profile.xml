@@ -59,14 +59,13 @@
                         android:textColorHint="@color/colorPrimary">
 
                         <TextView
-                            android:id="@+id/textView3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Name" />
 
                         <EditText
-                            android:id="@+id/editText3"
+                            android:id="@+id/editName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -81,7 +80,7 @@
                         android:layout_height="match_parent">
 
                         <EditText
-                            android:id="@+id/editText2"
+                            android:id="@+id/editLocation"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -104,6 +103,7 @@
                         android:textColorHint="@color/colorPrimary">
 
                         <EditText
+                            android:id="@+id/editAboutMe"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:imeOptions="actionNext"
@@ -133,6 +133,7 @@
                             android:text="Meeting Frequency" />
 
                         <EditText
+                            android:id="@+id/editFrequency"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:imeOptions="actionNext"
@@ -154,7 +155,7 @@
 
 
                 <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/floatingActionButton"
+                    android:id="@+id/buttonSubmit"
                     android:layout_width="220dp"
                     android:layout_height="220dp"
                     android:layout_alignParentBottom="true"
