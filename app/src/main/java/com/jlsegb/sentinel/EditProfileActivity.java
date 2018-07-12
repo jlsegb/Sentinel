@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,7 +27,17 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
+        //this didn't need to be used but will leave just in case it is needed later on @jose
+        // Added by Jose to see if it fixed the app's crashing
+        //FirebaseApp.initializeApp(getApplicationContext());@jose
+
         databaseProfiles = FirebaseDatabase.getInstance().getReference("profiles");
+
+        //*************Jose **************//
+        //write message 'm' to the database
+        //FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //DatabaseReference myRef = database.getReference("message");
+        //***********************************//
 
         editName = (EditText) findViewById(R.id.editName);
         editLocation = (EditText) findViewById(R.id.editLocation);
