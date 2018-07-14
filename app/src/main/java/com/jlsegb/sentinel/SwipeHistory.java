@@ -22,14 +22,22 @@ public class SwipeHistory {
     }
 
 // Add
-    public void add(String id, boolean isDesiredMatch) {
-
+    public void addDesirable(String id) {
         allSwipes.add(id);
-        if (isDesiredMatch) {
-            desiredMatches.add(id);
-            // check if match
+        desiredMatches.add(id);
+        if (isMatch(id)) {
+            matches.add(id);
+            // Also needs to add themselves to the other person's list of matches
+            // Also needs to reveal other persons contact info
+            // Also needs to allow other person to see their contact info
         }
-
+    }
+    public void addUndesirable(String id) {
+        allSwipes.add(id);
     }
 
+// Matching Logic
+    public boolean isMatch(String id) {
+        return false; // do something
+    }
 }
