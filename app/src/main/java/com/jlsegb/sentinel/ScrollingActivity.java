@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.google.firebase.FirebaseApp;
@@ -20,9 +21,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import static android.widget.Toast.LENGTH_LONG;
+
 
 
 public class ScrollingActivity extends AppCompatActivity {
+
+    FloatingActionButton checkMark;
+    FloatingActionButton xMark;
+    Account account = new Account();
 
     DatabaseReference databaseProfiles;
     Profile p;
@@ -36,7 +43,7 @@ public class ScrollingActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_scrolling);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        // setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +54,27 @@ public class ScrollingActivity extends AppCompatActivity {
             }
         });
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        checkMark = (FloatingActionButton) findViewById(R.id.fab3);
+        checkMark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkMark();
+            }
+        });
+        xMark = (FloatingActionButton) findViewById(R.id.fab);
+        xMark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                xMark();
+            }
+        });
+    }
+
+    private void checkMark() {
+        Toast.makeText(ScrollingActivity.this, "checkMark!",
+                Toast.LENGTH_LONG).show();
+        // call account.swipeHistory.addDesirable
 
         databaseProfiles = FirebaseDatabase.getInstance().getReference("profiles");
 
@@ -114,6 +142,12 @@ public class ScrollingActivity extends AppCompatActivity {
         textViewLocation.setText(p.getLocation());
         textViewCommunication.setText("Preferred method...");
 
+    }
+
+    private void xMark() {
+        Toast.makeText(ScrollingActivity.this, "xMark!",
+                Toast.LENGTH_LONG).show();
+        // call account.swipeHistory.addUndesirable
     }
 
 }
