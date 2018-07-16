@@ -17,6 +17,8 @@ import static android.widget.Toast.LENGTH_LONG;
 public class ScrollingActivity extends AppCompatActivity {
 
     FloatingActionButton checkMark;
+    FloatingActionButton xMark;
+    Account account = new Account();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +39,17 @@ public class ScrollingActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         checkMark = (FloatingActionButton) findViewById(R.id.fab3);
-
         checkMark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 checkMark();
+            }
+        });
+        xMark = (FloatingActionButton) findViewById(R.id.fab);
+        xMark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                xMark();
             }
         });
     }
@@ -49,6 +57,12 @@ public class ScrollingActivity extends AppCompatActivity {
     private void checkMark() {
         Toast.makeText(ScrollingActivity.this, "checkMark!",
                 Toast.LENGTH_LONG).show();
+        // call account.swipeHistory.addDesirable
+    }
+    private void xMark() {
+        Toast.makeText(ScrollingActivity.this, "xMark!",
+                Toast.LENGTH_LONG).show();
+        // call account.swipeHistory.addUndesirable
     }
 
 }
