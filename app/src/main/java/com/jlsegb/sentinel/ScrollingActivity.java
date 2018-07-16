@@ -6,12 +6,17 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 
 import java.util.Objects;
 
+import static android.widget.Toast.LENGTH_LONG;
+
 
 public class ScrollingActivity extends AppCompatActivity {
+
+    FloatingActionButton checkMark;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,5 +35,20 @@ public class ScrollingActivity extends AppCompatActivity {
             }
         });
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        checkMark = (FloatingActionButton) findViewById(R.id.fab3);
+
+        checkMark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkMark();
+            }
+        });
     }
+
+    private void checkMark() {
+        Toast.makeText(ScrollingActivity.this, "checkMark!",
+                Toast.LENGTH_LONG).show();
+    }
+
 }
