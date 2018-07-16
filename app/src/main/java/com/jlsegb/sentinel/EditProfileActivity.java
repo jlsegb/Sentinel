@@ -1,5 +1,6 @@
 package com.jlsegb.sentinel;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.ApiException;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -69,6 +71,12 @@ public class EditProfileActivity extends AppCompatActivity {
             databaseProfiles.child(id).setValue(profile);
 
             Toast.makeText(this, "Profile created", Toast.LENGTH_LONG).show();
+
+            try {
+                startActivity(new Intent(this, ScrollingActivity.class) );
+            } catch (Exception e) {
+                Toast.makeText(EditProfileActivity.this, "well frick", Toast.LENGTH_SHORT).show();
+            }
         }
         else{
             Toast.makeText(this, "You must enter a name", Toast.LENGTH_LONG).show();
