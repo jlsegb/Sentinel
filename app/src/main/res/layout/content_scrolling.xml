@@ -215,8 +215,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                app:srcCompat="@drawable/ic_email_at_black"
-                android:visibility="visible" />
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_phone_black" />
 
             <TextView
                 android:id="@+id/tvNumber4"
@@ -230,7 +230,7 @@
                 android:layout_toStartOf="@+id/adjustBox4"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="email@gmail.com"
+                android:text="(123) 456-7890"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#212121" />
 
@@ -243,7 +243,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@id/ivContactItem4"
                 android:layout_toRightOf="@id/ivContactItem4"
-                android:text="Email"
+                android:text="Phone Number"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="#727272" />
 
