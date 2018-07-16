@@ -38,6 +38,10 @@ public class SwipeHistory {
 
 // Matching Logic
     public boolean isMatch(String id) {
-        return false; // do something
+        // get the Json object from the id reference
+        // search through the "matches" list from the account object of the potential match for
+        // your own id
+        // if you find your own id, return true
+        return false; // else return false
     }
 }
