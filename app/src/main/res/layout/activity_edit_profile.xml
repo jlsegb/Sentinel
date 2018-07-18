@@ -166,6 +166,16 @@
                     app:srcCompat="@drawable/icn_submitpng"
                     tools:backgroundTint="#ffff" />
 
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/skipActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/buttonSubmit"
+                    android:layout_marginStart="27dp"
+                    android:clickable="true"
+                    app:srcCompat="@drawable/ln_bio" />
+
             </RelativeLayout>
 
 
