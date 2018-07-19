@@ -1,7 +1,9 @@
 package com.jlsegb.sentinel;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -87,6 +89,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d (TAG, "firebaseAuthWithGoogle:" + acct.getId());
+
+        SharedPreferences settings = getSharedPreferences("MY_KEYS",
+                Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("MY_KEY", acct.getId());
+        editor.apply();
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)

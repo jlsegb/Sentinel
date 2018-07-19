@@ -9,6 +9,10 @@ public class Profile {
     String frequency;
 
     public Profile () {
+        name1 = "****";
+        location = "*****";
+        aboutMe = "******";
+        frequency = "*******";
 
     }
 
