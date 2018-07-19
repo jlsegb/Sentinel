@@ -27,7 +27,7 @@ public class EditProfileActivity extends AppCompatActivity {
     EditText editAboutMe;
     EditText editFrequency;
     FloatingActionButton buttonSubmit;
-
+    FloatingActionButton skipActivity;
     DatabaseReference databaseProfiles;
 
     @Override
@@ -53,14 +53,19 @@ public class EditProfileActivity extends AppCompatActivity {
         editFrequency = (EditText) findViewById(R.id.editFrequency);
 
         buttonSubmit = (FloatingActionButton) findViewById(R.id.buttonSubmit);
-
+        skipActivity = (FloatingActionButton) findViewById(R.id.skipActivity);
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 addProfile();
             }
         });
-    }
+        skipActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                skipActivity();
+            }
+        });    }
 
     private void addProfile() {
         String name = editName.getText().toString().trim();
@@ -87,6 +92,13 @@ public class EditProfileActivity extends AppCompatActivity {
         }
         else{
             Toast.makeText(this, "You must enter a name", Toast.LENGTH_LONG).show();
+        }
+    }
+    public void skipActivity() {
+        try {
+            startActivity(new Intent(this, ScrollingActivity.class) );
+        } catch (Exception e) {
+            Toast.makeText(EditProfileActivity.this, "well frick", Toast.LENGTH_SHORT).show();
         }
     }
 

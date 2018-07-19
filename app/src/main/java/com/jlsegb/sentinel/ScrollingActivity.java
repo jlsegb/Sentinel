@@ -8,10 +8,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static android.widget.Toast.LENGTH_LONG;
 
 
 public class ScrollingActivity extends AppCompatActivity {
@@ -33,6 +44,11 @@ public class ScrollingActivity extends AppCompatActivity {
     Profile p;
 
     int i = 0;
+    DatabaseReference databaseProfiles;
+
+    ListView listViewProfiles;
+
+    List<Profile> profileList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,9 +90,19 @@ public class ScrollingActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_scrolling);
+
+        databaseProfiles = FirebaseDatabase.getInstance().getReference("profiles");
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
+        listViewProfiles = (ListView) findViewById(R.id.listViewProfiles);
+
+        profileList = new ArrayList<>();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         TextView textViewName = (TextView) findViewById(R.id.tvNumber1);
         TextView textViewAboutMe = (TextView) findViewById(R.id.tvNumber2);
         TextView textViewCommunication = (TextView) findViewById(R.id.tvNumber3);
@@ -104,10 +130,28 @@ public class ScrollingActivity extends AppCompatActivity {
 
         FloatingActionButton fab3 = (FloatingActionButton) findViewById(R.id.fab3);
         fab.setOnClickListener(new View.OnClickListener() {
+        databaseProfiles.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                profileList.clear();
+                for(DataSnapshot profileSnapshot: dataSnapshot.getChildren()){
+                    Profile profile = profileSnapshot.getValue(Profile.class);
+
+                    profileList.add(profile);
+                }
+
+                ProfileList adapter = new ProfileList(ScrollingActivity.this, profileList);
+
+                listViewProfiles.setAdapter(adapter);
+            }
+
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Accept!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
         //Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -115,34 +159,4 @@ public class ScrollingActivity extends AppCompatActivity {
 
 
     }
-
-
-
-
-
-
-
-    Profile getProfile(String username){
-        for (Profile p: profileList){
-            if (p.profileId == username)
-                return p;
-        }
-
-        return null;
-    }
-
-    Profile getProfile(int i){
-        return profileList.get(i);
-    }
-
-    void display(int i){
-        p = getProfile(i);
-        setContentView(R.layout.content_scrolling);
-
-
-
-
-
-    }
-
 }
