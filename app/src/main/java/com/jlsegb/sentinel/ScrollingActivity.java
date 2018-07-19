@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,32 +20,79 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-
-import static android.widget.Toast.LENGTH_LONG;
 
 
 
 public class ScrollingActivity extends AppCompatActivity {
 
-    FloatingActionButton checkMark;
-    FloatingActionButton xMark;
-    Account account = new Account();
-
     DatabaseReference databaseProfiles;
+
+    List<Profile> profileList;
     Profile p;
-    ArrayList<Profile> profileList;
 
     int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Toast.makeText(this, "On crestion", Toast.LENGTH_LONG).show();
+
+        databaseProfiles = FirebaseDatabase.getInstance().getReference("profiles");
+        System.out.print("***************************1*********************************");
+
+        profileList = new ArrayList<>();
+        databaseProfiles.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+                profileList.clear();
+                for (com.google.firebase.database.DataSnapshot profileSnapshot : dataSnapshot.getChildren()) {
+
+                    //String sProfile = new String();
+                    //this gets the object back and adds it to a list
+                    //every profile is added here!
+                    Profile p1 = profileSnapshot.getValue(Profile.class);
+                    profileList.add(p1);
+
+                    System.out.print(i);
+                    i++;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        Toast.makeText(this, "On crestion3", Toast.LENGTH_LONG).show();
+
+
+        if (profileList.size() > i)
+            p = profileList.get(i);
+
 
         setContentView(R.layout.activity_scrolling);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        // setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
+        TextView textViewName = (TextView) findViewById(R.id.tvNumber1);
+        TextView textViewAboutMe = (TextView) findViewById(R.id.tvNumber2);
+        TextView textViewCommunication = (TextView) findViewById(R.id.tvNumber3);
+        TextView textViewNumber = (TextView) findViewById(R.id.tvNumber4);
+        TextView textViewLocation = (TextView) findViewById(R.id.tvNumber5);
+        TextView textViewAboutFrequency = (TextView) findViewById(R.id.tvNumber6);
+
+        textViewAboutFrequency.setText("Meeting Frequency");
+        textViewAboutMe.setText("More about what I've been through and who I am");
+        textViewName.setText("My name is...");
+        textViewNumber.setText("(123) 456-7895");
+        textViewLocation.setText("Rexburg");
+        textViewCommunication.setText("Phone calls or in Person");
+        System.out.print("****************************3********************************");
+
+        //Deny button
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,63 +101,25 @@ public class ScrollingActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        checkMark = (FloatingActionButton) findViewById(R.id.fab3);
-        checkMark.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab3 = (FloatingActionButton) findViewById(R.id.fab3);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkMark();
+                Snackbar.make(view, "Accept!", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
-        xMark = (FloatingActionButton) findViewById(R.id.fab);
-        xMark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                xMark();
-            }
-        });
-    }
+        //Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-    private void checkMark() {
-        Toast.makeText(ScrollingActivity.this, "checkMark!",
-                Toast.LENGTH_LONG).show();
-        // call account.swipeHistory.addDesirable
 
-        databaseProfiles = FirebaseDatabase.getInstance().getReference("profiles");
-
-        display(i);
 
     }
 
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        profileList.clear();
-
-        databaseProfiles.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot profileSnapshot : dataSnapshot.getChildren()) {
-
-                    //String sProfile = new String();
-                    //this gets the object back and adds it to a list
-                    //every profile is added here!
-                    p = profileSnapshot.getValue(Profile.class);
-                    profileList.add(p);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
 
 
-            }
-        });
-    }
 
 
     Profile getProfile(String username){
@@ -128,26 +138,11 @@ public class ScrollingActivity extends AppCompatActivity {
     void display(int i){
         p = getProfile(i);
         setContentView(R.layout.content_scrolling);
-        TextView textViewName = (TextView) findViewById(R.id.tvNumber1);
-        TextView textViewAboutMe = (TextView) findViewById(R.id.tvNumber2);
-        TextView textViewCommunication = (TextView) findViewById(R.id.tvNumber3);
-        TextView textViewNumber = (TextView) findViewById(R.id.tvNumber4);
-        TextView textViewLocation = (TextView) findViewById(R.id.tvNumber5);
-        TextView textViewAboutFrequency = (TextView) findViewById(R.id.tvNumber6);
 
-        textViewAboutFrequency.setText(p.getFrequency());
-        textViewAboutMe.setText(p.getAboutMe());
-        textViewName.setText(p.aboutMe);
-        textViewNumber.setText(p.aboutMe);
-        textViewLocation.setText(p.getLocation());
-        textViewCommunication.setText("Preferred method...");
 
-    }
 
-    private void xMark() {
-        Toast.makeText(ScrollingActivity.this, "xMark!",
-                Toast.LENGTH_LONG).show();
-        // call account.swipeHistory.addUndesirable
+
+
     }
 
 }

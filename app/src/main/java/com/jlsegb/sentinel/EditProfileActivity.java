@@ -1,6 +1,9 @@
 package com.jlsegb.sentinel;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +16,9 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
+
+import java.util.List;
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -64,6 +70,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(name)){
 
+            //this is where we set the key value
             String id = databaseProfiles.push().getKey();
 
             Profile profile = new Profile(id, name, location, aboutMe, frequency);
@@ -82,4 +89,8 @@ public class EditProfileActivity extends AppCompatActivity {
             Toast.makeText(this, "You must enter a name", Toast.LENGTH_LONG).show();
         }
     }
+
+
+
 }
+
